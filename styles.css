@@ -395,16 +395,23 @@ a:focus {
 }
 
 .service-image {
-    grid-column: 1 / -1;
+    background-color: var(--background-light);
+    padding: 2.5rem;
+    border-radius: 8px;
+    text-align: center;
+    box-shadow: 0 4px 12px var(--shadow);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border: 2px solid transparent;
+    overflow: hidden;
     display: flex;
     align-items: center;
     justify-content: center;
-    border-radius: 8px;
-    overflow: hidden;
-    box-shadow: 0 4px 12px var(--shadow);
-    border: 3px solid var(--secondary-color);
-    max-height: 350px;
-    width: 100%;
+}
+
+.service-image:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+    border-color: var(--secondary-color);
 }
 
 .service-image img {
