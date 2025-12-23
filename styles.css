@@ -404,9 +404,9 @@ a:focus {
     border: 2px solid transparent;
     overflow: hidden;
     display: flex;
-    align-items: center;
-    justify-content: center;
-    aspect-ratio: 1;
+    align-items: stretch;
+    justify-content: stretch;
+    min-height: 380px;
 }
 
 .service-image:hover {
@@ -420,6 +420,7 @@ a:focus {
     height: 100%;
     object-fit: cover;
     border-radius: 8px;
+    display: block;
 }
 
 /* ===================================
