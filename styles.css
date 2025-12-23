@@ -403,6 +403,8 @@ a:focus {
     overflow: hidden;
     box-shadow: 0 4px 12px var(--shadow);
     border: 3px solid var(--secondary-color);
+    max-height: 350px;
+    min-height: 250px;
 }
 
 .service-image img {
