@@ -295,6 +295,29 @@ a:focus {
     font-style: italic;
 }
 
+.quote-content {
+    display: grid;
+    grid-template-columns: 200px 1fr;
+    gap: 2rem;
+    align-items: start;
+}
+
+.quote-image {
+    width: 100%;
+}
+
+.quote-image img {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px var(--shadow);
+    border: 3px solid var(--secondary-color);
+}
+
+.quote-text p {
+    margin-bottom: 1rem;
+}
+
 .quote cite {
     display: block;
     margin-top: 1rem;
@@ -624,6 +647,16 @@ a:focus {
     .contact-content,
     .support-content {
         grid-template-columns: 1fr;
+    }
+    
+    .quote-content {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+    
+    .quote-image {
+        max-width: 250px;
+        margin: 0 auto;
     }
     
     .nav-menu {
