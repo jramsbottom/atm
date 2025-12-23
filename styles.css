@@ -768,6 +768,14 @@ a:focus {
     .contact-form-wrapper {
         padding: 2rem 1rem;
     }
+    
+    .support-card, .support-impact {
+        padding: 2rem 1rem;
+    }
+    
+    .impact-number {
+        font-size: 2.5rem;
+    }
 }
 
 /* ===================================
