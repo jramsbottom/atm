@@ -395,7 +395,7 @@ a:focus {
 }
 
 .service-image {
-    grid-column: span 1;
+    grid-column: 1 / -1;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -404,7 +404,7 @@ a:focus {
     box-shadow: 0 4px 12px var(--shadow);
     border: 3px solid var(--secondary-color);
     max-height: 350px;
-    min-height: 250px;
+    width: 100%;
 }
 
 .service-image img {
