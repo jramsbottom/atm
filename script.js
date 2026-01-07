@@ -75,52 +75,46 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
 const contactForm = document.getElementById('contactForm');
 
 if (contactForm) {
-    contactForm.addEventListener('submit', function(e) {
+    contactForm.addEventListener('submit', async function(e) {
         e.preventDefault();
         
-        // Get form data
-        const formData = {
-            name: document.getElementById('name').value,
-            email: document.getElementById('email').value,
-            phone: document.getElementById('phone').value,
-            message: document.getElementById('message').value,
-            consent: document.getElementById('consent').checked
-        };
-        
-        // Basic validation
-        if (!formData.name.trim() || !formData.email.trim() || !formData.message.trim()) {
-            showFormMessage('Please fill in all required fields.', 'error');
-            return;
-        }
-        
-        if (!formData.consent) {
-            showFormMessage('Please consent to your details being stored.', 'error');
-            return;
-        }
-        
-        // Email validation
-        const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-        if (!emailPattern.test(formData.email)) {
-            showFormMessage('Please enter a valid email address.', 'error');
-            return;
-        }
-        
-        // Simulate form submission
-        // In production, this would send data to a server
         const submitButton = contactForm.querySelector('button[type="submit"]');
+        const formStatus = document.getElementById('form-status');
+        
+        // Disable button and show loading state
         submitButton.disabled = true;
         submitButton.textContent = 'Sending...';
         
-        // Simulate API call
-        setTimeout(() => {
-            showFormMessage('Thank you for your message! We will get back to you soon.', 'success');
-            contactForm.reset();
+        // Get form data
+        const formData = new FormData(contactForm);
+        
+        try {
+            // Send to Formspree
+            const response = await fetch(contactForm.action, {
+                method: 'POST',
+                body: formData,
+                headers: {
+                    'Accept': 'application/json'
+                }
+            });
+            
+            if (response.ok) {
+                showFormMessage('Thank you for your message! We will get back to you soon.', 'success');
+                contactForm.reset();
+            } else {
+                const data = await response.json();
+                if (data.errors) {
+                    showFormMessage(data.errors.map(error => error.message).join(', '), 'error');
+                } else {
+                    showFormMessage('Oops! There was a problem submitting your form. Please try again.', 'error');
+                }
+            }
+        } catch (error) {
+            showFormMessage('Oops! There was a problem submitting your form. Please try again.', 'error');
+        } finally {
             submitButton.disabled = false;
             submitButton.textContent = 'Send Message';
-            
-            // Log to console (in production, this would be sent to a server)
-            console.log('Form submission:', formData);
-        }, 1500);
+        }
     });
 }
 

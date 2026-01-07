@@ -213,7 +213,7 @@
                     <h3>Send Us a Message</h3>
                     <p class="privacy-note">Your details are safe with us</p>
                     
-                    <form class="contact-form" id="contactForm">
+                    <form class="contact-form" id="contactForm" action="https://formspree.io/f/xrebnqnw" method="POST">
                         <div class="form-group">
                             <label for="name">Name *</label>
                             <input type="text" id="name" name="name" required>
@@ -240,6 +240,7 @@
                         </div>
                         
                         <button type="submit" class="btn btn-primary">Send Message</button>
+                        <div id="form-status"></div>
                     </form>
                 </div>
             </div>
